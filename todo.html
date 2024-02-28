@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>⠀</h1>
+    </header>
+    <section class="todo-container">
+      <input type="text" id="newTodo" placeholder="Add a new class">
+      <button onclick="addClass()">Add</button>
+      <ul id="classSchedule"></ul>
+    </section>
+
+    <section class="content">
+      <h2></h2>
+      <p id="currentTime"></p>
+    </section>
+  </div>
+
+  <script>
+  function addClass() {
+  const newClassInput = document.getElementById("newTodo");
+  const classScheduleList = document.getElementById("classSchedule");
+
+  const newClassText = newClassInput.value.trim();
+
+  if (newClassText !== "") {
+    const li = document.createElement("li");
+    li.textContent = newClassText;
+
+    // Add close button
+    const closeButton = document.createElement('span');
+    closeButton.textContent = 'x';
+    closeButton.className = 'close';
+    closeButton.onclick = function () {
+      this.parentElement.remove();
+    };
+    li.appendChild(closeButton);
+
+    classScheduleList.appendChild(li);
+
+    // Clear the input field after adding a class
+    newClassInput.value = "";
+  }
+}
+// app.js
+async function getCurrentTime() {
+  try {
+    const response = await fetch("http://worldtimeapi.org/api/timezone/America/New_York");
+    const data = await response.json();
+    return data.datetime;
+  } catch (error) {
+    console.error("Error fetching time:", error);
+    return "Error fetching time";
+  }
+}
+
+async function displayCurrentTime() {
+  const currentTimeElement = document.getElementById('currentTime');
+  currentTimeElement.textContent = await getCurrentTime();
+}
+
+
+// Display current time on page load
+displayCurrentTime();
+
+// Update current time every second
+setInterval(displayCurrentTime, 1000);
+
+  </script>
+  
+  <style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(10, 10, 10);
+    color: #ffffff;
+    display: flex;
+    margin: 0; /* Remove default body margin */
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .todo-container {
+    width: 500px;
+    box-sizing: border-box;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  input[type="text"] {
+    width: 80%;
+    height: 30px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: rgb(25, 25, 25);
+    border: none;
+  }
+  
+/* Add this to your styles.css file */
+/* Add this to your styles.css file */
+/* Add this to your styles.css file */
+.close {
+    color: #ffffff;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+  
+
+  button {
+    background-color: rgb(25, 25, 25);
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: rgb(43, 43, 43);
+  }
+  
+  li {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    background-color: rgb(22, 22, 22);
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+
+  
+  #currentTime {
+    font-size: 2em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+    border: #ffffff 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+
+
+
+  /* Existing styles go here */
+/* Existing styles go here */
+/* Existing styles go here */
+
+
+
+  
+  .bottom-container {
+    background-color: #333; /* Set your desired background color */
+    color: #fff; /* Set your desired text color */
+    padding: 20px;
+    flex-grow: 1; /* Make the container grow to fill available space */
+  }
+  
+    <style/>
+  
+  
+</body>
+
+</html>
