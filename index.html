@@ -11,17 +11,16 @@
 <body>
   <div class="container">
     <header>
-      <h1>⠀</h1>
+      <h1 id = texxt>Todo List</h1>
     </header>
     <section class="todo-container">
+      
       <input type="text" id="newTodo" placeholder="Add a new class">
       <button onclick="addClass()">Add</button>
       <ul id="classSchedule"></ul>
     </section>
 
     <section class="content">
-      <h2></h2>
-      <p id="currentTime"></p>
     </section>
   </div>
 
@@ -86,12 +85,19 @@ setInterval(displayCurrentTime, 1000);
     margin: 0; /* Remove default body margin */
   }
   
+    #texxt {
+      /*background-color:red;*/
+      transform: translate(160px, 0px);
+
+    }
+    
   .container {
     max-width: 800px;
     margin: 20px auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    text-align:center;
   }
   
   header {
@@ -105,11 +111,15 @@ setInterval(displayCurrentTime, 1000);
     border: 2px solid #ffffff;
     border-radius: 8px;
     padding: 10px;
+    text-align:center;
+
   }
   
   ul {
     list-style: none;
     padding: 0;
+    text-align:center;
+
   }
   
   input[type="text"] {
